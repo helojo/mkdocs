@@ -46,7 +46,7 @@
     </tr>
     <tr>
         <td>ts</td>
-        <td>string</td>
+        <td>int</td>
         <td>否</td>
         <td>时间戳</td>
     </tr>
@@ -58,9 +58,15 @@
     </tr>
     <tr>
         <td>logintype</td>
-        <td>string</td>
+        <td>int</td>
         <td>否</td>
         <td>登录方式,0 Token登录,1账号密码方式登录</td>
+    </tr>
+    <tr>
+        <td>sign</td>
+        <td>string</td>
+        <td>否</td>
+        <td>签名：md5(accesstoken+account+password+ts+appkey)</td>
     </tr>
 </table>
 
@@ -94,7 +100,7 @@
         <td>sex</td>
         <td>int</td>
         <td>否</td>
-        <td>渠道用户性别</td>
+        <td>渠道用户性别(1男，2女，0未知)</td>
     </tr>
     <tr>
         <td>accesstoken</td>
@@ -110,7 +116,7 @@
     </tr>
     <tr>
         <td>status</td>
-        <td>string</td>
+        <td>int</td>
         <td>否</td>
         <td>登录状态(200登录成功,其他登录失败)</td>
     </tr>
@@ -138,7 +144,7 @@
         <td>sign</td>
         <td>string</td>
         <td>否</td>
-        <td>渠道用户sign</td>
+        <td>签名：md5(accesstoken+ts+uid+appkey)</td>
     </tr>
     <tr>
         <td>accesstoken</td>
@@ -148,9 +154,15 @@
     </tr>
     <tr>
         <td>platid</td>
-        <td>string</td>
+        <td>int</td>
         <td>否</td>
         <td>渠道id</td>
+    </tr>
+    <tr>
+        <td>ts</td>
+        <td>int</td>
+        <td>否</td>
+        <td>登陆时间戳:秒</td>
     </tr>
     <tr>
         <td>subplatid</td>
@@ -160,7 +172,7 @@
     </tr>
     <tr>
         <td>gameid</td>
-        <td>string</td>
+        <td>int</td>
         <td>否</td>
         <td>游戏id</td>
     </tr>
@@ -192,19 +204,19 @@
     </tr>
     <tr>
         <td>money</td>
-        <td>string</td>
+        <td>int</td>
         <td>否</td>
-        <td>订单金额</td>
+        <td>订单金额(分，美分)</td>
     </tr>
     <tr>
         <td>sign</td>
         <td>string</td>
         <td>否</td>
-        <td>支付签名</td>
+        <td>签名:md5(money+platorder+uid+ts+appkey)</td>
     </tr>
     <tr>
         <td>platid</td>
-        <td>string</td>
+        <td>int</td>
         <td>否</td>
         <td>渠道id</td>
     </tr>
@@ -213,6 +225,12 @@
         <td>string</td>
         <td>否</td>
         <td>子渠道id</td>
+    </tr>
+    <tr>
+        <td>ts</td>
+        <td>int</td>
+        <td>否</td>
+        <td>时间戳:秒</td>
     </tr>
 </table>
 #### 返回说明
@@ -256,10 +274,16 @@ success(表示充值成功,其他表示充值失败)
         <td>订单金额</td>
     </tr>
     <tr>
+        <td>ts</td>
+        <td>int</td>
+        <td>否</td>
+        <td>时间戳:秒</td>
+    </tr>
+    <tr>
         <td>sign</td>
         <td>string</td>
         <td>否</td>
-        <td>支付签名</td>
+        <td>支付签名:md5(money+platorder+ts+uid+appkey)</td>
     </tr>
 </table>
 
@@ -273,7 +297,7 @@ success(表示充值成功,其他表示充值失败)
     </tr>
     <tr>
         <td>status</td>
-        <td>string</td>
+        <td>int</td>
         <td>否</td>
         <td>充值确认返回状态码(200成功)</td>
     </tr>
@@ -291,9 +315,9 @@ success(表示充值成功,其他表示充值失败)
     </tr>
     <tr>
         <td>money</td>
-        <td>string</td>
+        <td>int</td>
         <td>否</td>
-        <td>订单金额</td>
+        <td>订单金额(单位：分)</td>
     </tr>
     <tr>
         <td>subplatid</td>
