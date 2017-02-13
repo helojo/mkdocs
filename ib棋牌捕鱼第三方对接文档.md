@@ -4,12 +4,12 @@
 待整理...
 # 接口对接
 
-## 用户登录流程
+## 1 用户登录流程
 游戏登录第三方渠道账号有3种方式：
 * 账号密码登录或Token登录
 * html5网页登录
 
-### 账号密码或Token登录
+### 1.1 账号密码或Token登录
     请求地址: http://xxx.xxx.xxx/sdk/api
 
 #### 参数说明
@@ -124,7 +124,7 @@
 
 ***
 
-### html5网页登录
+### 1.2 html5网页登录
     请求地址:http://xxx.xxx.xxx:7003/sdk/callback_login
 游戏方提供h5游戏地址给渠道方安卓文档传入相应参数进行登录
 <table>
@@ -179,8 +179,8 @@
 </table>
 
 ***
-
-### 充值
+## 2 充值
+### 2.1 兑换游戏币
     请求地址:http://xxx.xxx.xxx:7003/sdk/callback_payment
 #### 参数说明
 <table>
@@ -212,7 +212,7 @@
         <td>sign</td>
         <td>string</td>
         <td>否</td>
-        <td>签名:md5(money+platorder+uid+ts+appkey)</td>
+        <td>签名:md5(money+platorder+ts+uid+appkey)</td>
     </tr>
     <tr>
         <td>platid</td>
@@ -238,7 +238,7 @@ success(表示充值成功,其他表示充值失败)
 
 ***
 
-### 充值确认
+### 2.2 充值确认
     请求地址:http://xxx.xxx.xxx:7003/sdk/api
 由渠道方提供,游戏收到充值请求时调用该接口。用于游戏向渠道方确认充值操作
 #### 参数说明
