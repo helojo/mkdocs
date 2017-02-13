@@ -1,0 +1,304 @@
+
+# 游戏介绍
+
+待整理...
+# 接口对接
+
+## 用户登录流程
+游戏登录第三方渠道账号有3种方式：
+* 账号密码登录或Token登录
+* html5网页登录
+
+### 账号密码或Token登录
+    请求地址: http://xxx.xxx.xxx/sdk/api
+
+#### 参数说明
+<table>
+      <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否可选</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>cmd</td>
+        <td>string</td>
+        <td>否</td>
+        <td>操作命令：login</td>
+    </tr>
+    <tr>
+        <td>account</td>
+        <td>string</td>
+        <td>是</td>
+        <td>渠道用户ID或者账号(logintype为0时为可选登录,否则为必须项)</td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td>string</td>
+        <td>是</td>
+        <td>渠道用户账号对应的密码(logintype为0时为可选登录,否则为必须项)</td>
+    </tr>
+    <tr>
+        <td>accesstoken</td>
+        <td>string</td>
+        <td>是</td>
+        <td>渠道session或者access_token(logintype为1时为可选登录,否则为必须项)</td>
+    </tr>
+    <tr>
+        <td>ts</td>
+        <td>string</td>
+        <td>否</td>
+        <td>时间戳</td>
+    </tr>
+    <tr>
+        <td>ip</td>
+        <td>string</td>
+        <td>是</td>
+        <td>用户的ip地址</td>
+    </tr>
+    <tr>
+        <td>logintype</td>
+        <td>string</td>
+        <td>否</td>
+        <td>登录方式,0 Token登录,1账号密码方式登录</td>
+    </tr>
+</table>
+
+#### 返回说明
+<table>
+      <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否可选</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>uid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道用户ID或者账号</td>
+    </tr>
+    <tr>
+        <td>username</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道用户昵称</td>
+    </tr>
+    <tr>
+        <td>headimg</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道用户头像</td>
+    </tr>
+    <tr>
+        <td>sex</td>
+        <td>int</td>
+        <td>否</td>
+        <td>渠道用户性别</td>
+    </tr>
+    <tr>
+        <td>accesstoken</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道session或者access_token</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>子渠道id</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>string</td>
+        <td>否</td>
+        <td>登录状态(200登录成功,其他登录失败)</td>
+    </tr>
+</table>
+
+***
+
+### html5网页登录
+    请求地址:http://xxx.xxx.xxx:7003/sdk/callback_login
+游戏方提供h5游戏地址给渠道方安卓文档传入相应参数进行登录
+<table>
+      <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否可选</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>uid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道用户ID或者账号</td>
+    </tr>
+    <tr>
+        <td>sign</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道用户sign</td>
+    </tr>
+    <tr>
+        <td>accesstoken</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道session或者access_token</td>
+    </tr>
+    <tr>
+        <td>platid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道id</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>子渠道id</td>
+    </tr>
+    <tr>
+        <td>gameid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>游戏id</td>
+    </tr>
+</table>
+
+***
+
+### 充值
+    请求地址:http://xxx.xxx.xxx:7003/sdk/callback_payment
+#### 参数说明
+<table>
+      <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否可选</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>uid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道用户ID或者账号</td>
+    </tr>
+    <tr>
+        <td>platorder</td>
+        <td>string</td>
+        <td>否</td>
+        <td>订单号(渠道方订单号、流水号，最长32位唯一字符串)</td>
+    </tr>
+    <tr>
+        <td>money</td>
+        <td>string</td>
+        <td>否</td>
+        <td>订单金额</td>
+    </tr>
+    <tr>
+        <td>sign</td>
+        <td>string</td>
+        <td>否</td>
+        <td>支付签名</td>
+    </tr>
+    <tr>
+        <td>platid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道id</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>子渠道id</td>
+    </tr>
+</table>
+#### 返回说明
+success(表示充值成功,其他表示充值失败)
+
+***
+
+### 充值确认
+    请求地址:http://xxx.xxx.xxx:7003/sdk/api
+由渠道方提供,游戏收到充值请求时调用该接口。用于游戏向渠道方确认充值操作
+#### 参数说明
+<table>
+      <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否可选</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>cmd</td>
+        <td>string</td>
+        <td>否</td>
+        <td>操作命令：paymoney</td>
+    </tr>
+    <tr>
+        <td>uid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道用户ID或者账号</td>
+    </tr>
+    <tr>
+        <td>platorder</td>
+        <td>string</td>
+        <td>否</td>
+        <td>订单号(渠道方订单号、流水号，最长32位唯一字符串)</td>
+    </tr>
+    <tr>
+        <td>money</td>
+        <td>string</td>
+        <td>否</td>
+        <td>订单金额</td>
+    </tr>
+    <tr>
+        <td>sign</td>
+        <td>string</td>
+        <td>否</td>
+        <td>支付签名</td>
+    </tr>
+</table>
+
+#### 返回说明
+<table>
+      <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否可选</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>string</td>
+        <td>否</td>
+        <td>充值确认返回状态码(200成功)</td>
+    </tr>
+    <tr>
+        <td>uid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道用户ID或者账号</td>
+    </tr>
+    <tr>
+        <td>platorder</td>
+        <td>string</td>
+        <td>否</td>
+        <td>订单号(渠道方订单号、流水号，最长32位唯一字符串)</td>
+    </tr>
+    <tr>
+        <td>money</td>
+        <td>string</td>
+        <td>否</td>
+        <td>订单金额</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>string</td>
+        <td>是</td>
+        <td>子渠道id</td>
+    </tr>
+</table>
