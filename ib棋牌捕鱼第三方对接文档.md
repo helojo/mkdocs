@@ -4,12 +4,97 @@
 待整理...
 # 接口对接
 
-## 1 用户登录流程
+## 1 账号注册
+    请求地址: http://xxx.xxx.xxx/sdk/api
+
+#### 参数说明
+<table>
+      <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否可选</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>cmd</td>
+        <td>string</td>
+        <td>否</td>
+        <td>操作命令：reg</td>
+    </tr>
+    <tr>
+        <td>account</td>
+        <td>string</td>
+        <td>是</td>
+        <td>渠道用户ID或者账号(logintype为0时为可选登录,否则为必须项)</td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td>string</td>
+        <td>是</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>ip</td>
+        <td>string</td>
+        <td>是</td>
+        <td>用户的ip地址</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>是</td>
+        <td>用户所属子渠道ID</td>
+    </tr>
+    <tr>
+        <td>sign</td>
+        <td>string</td>
+        <td>是</td>
+        <td>签名md5(account+password+subplatid+appkey)</td>
+    </tr>
+</table>
+
+#### 返回说明
+<table>
+      <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否可选</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>uid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道用户ID或者账号</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>否</td>
+        <td>渠道用户ID或者账号</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>int</td>
+        <td>否</td>
+        <td>注册状态(200登录成功,其他登录失败)</td>
+    </tr>
+    <tr>
+        <td>desc</td>
+        <td>string</td>
+        <td>否</td>
+        <td>成功或失败描述</td>
+    </tr>
+</table>
+
+***
+
+## 2 用户登录
 游戏登录第三方渠道账号有3种方式：
 * 账号密码登录或Token登录
 * html5网页登录
 
-### 1.1 账号密码或Token登录
+### 2.1 账号密码或Token登录
     请求地址: http://xxx.xxx.xxx/sdk/api
 
 #### 参数说明
@@ -45,16 +130,16 @@
         <td>渠道session或者access_token(logintype为1时为可选登录,否则为必须项)</td>
     </tr>
     <tr>
-        <td>ts</td>
-        <td>int</td>
-        <td>否</td>
-        <td>时间戳</td>
-    </tr>
-    <tr>
         <td>ip</td>
         <td>string</td>
         <td>是</td>
         <td>用户的ip地址</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>是</td>
+        <td>用户所属子渠道</td>
     </tr>
     <tr>
         <td>logintype</td>
@@ -66,7 +151,7 @@
         <td>sign</td>
         <td>string</td>
         <td>否</td>
-        <td>签名：md5(accesstoken+account+password+ts+appkey)</td>
+        <td>签名：md5(accesstoken+account+password+subplatid+appkey)</td>
     </tr>
 </table>
 
@@ -110,7 +195,7 @@
     </tr>
     <tr>
         <td>subplatid</td>
-        <td>string</td>
+        <td>int</td>
         <td>否</td>
         <td>子渠道id</td>
     </tr>
@@ -124,7 +209,7 @@
 
 ***
 
-### 1.2 html5网页登录
+### 2.2 html5网页登录
     请求地址:http://xxx.xxx.xxx:7003/sdk/callback_login
 游戏方提供h5游戏地址给渠道方安卓文档传入相应参数进行登录
 <table>
@@ -144,7 +229,7 @@
         <td>sign</td>
         <td>string</td>
         <td>否</td>
-        <td>签名：md5(accesstoken+ts+uid+appkey)</td>
+        <td>签名：md5(accesstoken+subplatid+uid+appkey)</td>
     </tr>
     <tr>
         <td>accesstoken</td>
@@ -159,14 +244,8 @@
         <td>渠道id</td>
     </tr>
     <tr>
-        <td>ts</td>
-        <td>int</td>
-        <td>否</td>
-        <td>登陆时间戳:秒</td>
-    </tr>
-    <tr>
         <td>subplatid</td>
-        <td>string</td>
+        <td>int</td>
         <td>否</td>
         <td>子渠道id</td>
     </tr>
@@ -179,8 +258,9 @@
 </table>
 
 ***
-## 2 充值
-### 2.1 兑换游戏币
+
+## 3 充值
+### 3.1 兑入游戏币
     请求地址:http://xxx.xxx.xxx:7003/sdk/callback_payment
 #### 参数说明
 <table>
@@ -212,7 +292,7 @@
         <td>sign</td>
         <td>string</td>
         <td>否</td>
-        <td>签名:md5(money+platorder+ts+uid+appkey)</td>
+        <td>签名:md5(money+platorder+subplatid+ts+uid+appkey)</td>
     </tr>
     <tr>
         <td>platid</td>
@@ -222,7 +302,7 @@
     </tr>
     <tr>
         <td>subplatid</td>
-        <td>string</td>
+        <td>int</td>
         <td>否</td>
         <td>子渠道id</td>
     </tr>
@@ -234,11 +314,30 @@
     </tr>
 </table>
 #### 返回说明
-success(表示充值成功,其他表示充值失败)
+<table>
+    <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否可选</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>int</td>
+        <td>否</td>
+        <td>状态：200成功，其他失败</td>
+    </tr>
+    <tr>
+        <td>desc</td>
+        <td>string</td>
+        <td>是</td>
+        <td>成功或失败描述</td>
+    </tr>
+</table>
 
 ***
 
-### 2.2 充值确认
+### 3.2 兑入游戏币确认
     请求地址:http://xxx.xxx.xxx:7003/sdk/api
 由渠道方提供,游戏收到充值请求时调用该接口。用于游戏向渠道方确认充值操作
 #### 参数说明
@@ -274,6 +373,12 @@ success(表示充值成功,其他表示充值失败)
         <td>订单金额</td>
     </tr>
     <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>否</td>
+        <td>子渠道ID</td>
+    </tr>
+    <tr>
         <td>ts</td>
         <td>int</td>
         <td>否</td>
@@ -283,7 +388,7 @@ success(表示充值成功,其他表示充值失败)
         <td>sign</td>
         <td>string</td>
         <td>否</td>
-        <td>支付签名:md5(money+platorder+ts+uid+appkey)</td>
+        <td>支付签名:md5(money+platorder+subplatid+ts+uid+appkey)</td>
     </tr>
 </table>
 
@@ -321,8 +426,244 @@ success(表示充值成功,其他表示充值失败)
     </tr>
     <tr>
         <td>subplatid</td>
-        <td>string</td>
+        <td>int</td>
         <td>是</td>
         <td>子渠道id</td>
     </tr>
 </table>
+
+***
+
+### 3.3 兑出游戏币
+    请求地址:http://xxx.xxx.xxx:7003/sdk/callback_redeemout
+#### 参数说明
+<table>
+      <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否可选</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>uid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道用户ID或者账号</td>
+    </tr>
+    <tr>
+        <td>platorder</td>
+        <td>string</td>
+        <td>否</td>
+        <td>订单号(渠道方订单号、流水号，最长32位唯一字符串)</td>
+    </tr>
+    <tr>
+        <td>money</td>
+        <td>int</td>
+        <td>否</td>
+        <td>订单金额(人民币分)</td>
+    </tr>
+    <tr>
+        <td>sign</td>
+        <td>string</td>
+        <td>否</td>
+        <td>签名:md5(money+platorder+ts+uid+appkey)</td>
+    </tr>
+    <tr>
+        <td>platid</td>
+        <td>int</td>
+        <td>否</td>
+        <td>渠道id</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>子渠道id</td>
+    </tr>
+    <tr>
+        <td>ts</td>
+        <td>int</td>
+        <td>否</td>
+        <td>时间戳:秒</td>
+    </tr>
+</table>
+#### 返回说明
+### 3.4 兑出游戏币确认
+    请求地址:http://xxx.xxx.xxx/sdk/api
+由渠道方提供,游戏收到兑出请求时调用该接口
+#### 参数说明
+<table>
+      <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否可选</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>cmd</td>
+        <td>string</td>
+        <td>否</td>
+        <td>操作命令：redeemout</td>
+    </tr>
+    <tr>
+        <td>uid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道用户ID或者账号</td>
+    </tr>
+    <tr>
+        <td>platorder</td>
+        <td>string</td>
+        <td>否</td>
+        <td>订单号(渠道方订单号、流水号，最长32位唯一字符串)</td>
+    </tr>
+    <tr>
+        <td>money</td>
+        <td>string</td>
+        <td>否</td>
+        <td>订单金额</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>否</td>
+        <td>子渠道ID</td>
+    </tr>
+    <tr>
+        <td>ts</td>
+        <td>int</td>
+        <td>否</td>
+        <td>时间戳:秒</td>
+    </tr>
+    <tr>
+        <td>sign</td>
+        <td>string</td>
+        <td>否</td>
+        <td>支付签名:md5(money+platorder+subplatid+ts+uid+appkey)</td>
+    </tr>
+</table>
+
+#### 返回说明
+<table>
+      <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否可选</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>int</td>
+        <td>否</td>
+        <td>充值确认返回状态码(200成功)</td>
+    </tr>
+    <tr>
+        <td>uid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道用户ID或者账号</td>
+    </tr>
+    <tr>
+        <td>platorder</td>
+        <td>string</td>
+        <td>否</td>
+        <td>订单号(渠道方订单号、流水号，最长32位唯一字符串)</td>
+    </tr>
+    <tr>
+        <td>money</td>
+        <td>int</td>
+        <td>否</td>
+        <td>订单金额(单位：分)</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>是</td>
+        <td>子渠道id</td>
+    </tr>
+</table>
+
+
+### 3.5 查询玩家当前能够兑换的余额
+    请求地址:http://xxx.xxx.xxx:7003/sdk/callback_balance
+由渠道方提供,游戏收到兑出请求时调用该接口
+#### 参数说明
+<table>
+      <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否可选</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>uid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道用户ID或者账号</td>
+    </tr>
+    <tr>
+        <td>platid</td>
+        <td>int</td>
+        <td>否</td>
+        <td>渠道ID</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>否</td>
+        <td>子渠道ID</td>
+    </tr>
+    <tr>
+        <td>gameid</td>
+        <td>int</td>
+        <td>否</td>
+        <td>游戏ID</td>
+    </tr>
+    <tr>
+        <td>ts</td>
+        <td>int</td>
+        <td>否</td>
+        <td>时间戳:秒</td>
+    </tr>
+    <tr>
+        <td>sign</td>
+        <td>string</td>
+        <td>否</td>
+        <td>支付签名:md5(uid+ts+appkey)</td>
+    </tr>
+</table>
+
+#### 返回说明
+<table>
+      <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否可选</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>int</td>
+        <td>否</td>
+        <td>充值确认返回状态码(200成功)</td>
+    </tr>
+    <tr>
+        <td>desc</td>
+        <td>string</td>
+        <td>否</td>
+        <td>描述</td>
+    </tr>
+    <tr>
+        <td>uid</td>
+        <td>string</td>
+        <td>否</td>
+        <td>渠道用户ID或者账号</td>
+    </tr>
+    <tr>
+        <td>money</td>
+        <td>int</td>
+        <td>否</td>
+        <td>订单金额(单位：分)</td>
+    </tr>
+</table>
+
