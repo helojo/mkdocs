@@ -4,8 +4,8 @@
 待整理...
 # 接口对接
 
-## 1 账号注册
-    请求地址: http://xxx.xxx.xxx/sdk/api
+## 1 账号注册(方法：POST)
+    请求地址: http://xxx.xxx.xxx/sdk/api?sign=xxxxxxxxx
 
 #### 参数说明
 <table>
@@ -44,12 +44,6 @@
         <td>int</td>
         <td>是</td>
         <td>用户所属子渠道ID</td>
-    </tr>
-    <tr>
-        <td>sign</td>
-        <td>string</td>
-        <td>是</td>
-        <td>签名md5(account+password+subplatid+appkey)</td>
     </tr>
 </table>
 
@@ -94,8 +88,8 @@
 * 账号密码登录或Token登录
 * html5网页登录
 
-### 2.1 账号密码或Token登录
-    请求地址: http://xxx.xxx.xxx/sdk/api
+### 2.1 账号密码或Token登录(方法：POST)
+    请求地址: http://xxx.xxx.xxx/sdk/api?sign=xxxxxxxxxx
 
 #### 参数说明
 <table>
@@ -146,12 +140,6 @@
         <td>int</td>
         <td>否</td>
         <td>登录方式,0 Token登录,1账号密码方式登录</td>
-    </tr>
-    <tr>
-        <td>sign</td>
-        <td>string</td>
-        <td>否</td>
-        <td>签名：md5(accesstoken+account+password+subplatid+appkey)</td>
     </tr>
 </table>
 
@@ -209,7 +197,7 @@
 
 ***
 
-### 2.2 html5网页登录
+### 2.2 html5网页登录(方法：GET)
     请求地址:http://xxx.xxx.xxx:7003/sdk/callback_login
 游戏方提供h5游戏地址给渠道方安卓文档传入相应参数进行登录
 <table>
@@ -260,8 +248,8 @@
 ***
 
 ## 3 充值
-### 3.1 兑入游戏币
-    请求地址:http://xxx.xxx.xxx:7003/sdk/callback_payment
+### 3.1 兑入游戏币（方法：POST）
+    请求地址:http://xxx.xxx.xxx:7003/sdk/callback_payment?sign=xxxxxxxxx&gameid=xxx&platid=xxx
 #### 参数说明
 <table>
       <tr>
@@ -286,19 +274,7 @@
         <td>money</td>
         <td>int</td>
         <td>否</td>
-        <td>订单金额(分，美分)</td>
-    </tr>
-    <tr>
-        <td>sign</td>
-        <td>string</td>
-        <td>否</td>
-        <td>签名:md5(money+platorder+subplatid+ts+uid+appkey)</td>
-    </tr>
-    <tr>
-        <td>platid</td>
-        <td>int</td>
-        <td>否</td>
-        <td>渠道id</td>
+        <td>订单金额(分)</td>
     </tr>
     <tr>
         <td>subplatid</td>
@@ -337,8 +313,8 @@
 
 ***
 
-### 3.2 兑入游戏币确认
-    请求地址:http://xxx.xxx.xxx:7003/sdk/api
+### 3.2 兑入游戏币确认(方法：POST)
+    请求地址:http://xxx.xxx.xxx:7003/sdk/api?sign=xxxxxxx
 由渠道方提供,游戏收到充值请求时调用该接口。用于游戏向渠道方确认充值操作
 #### 参数说明
 <table>
@@ -384,12 +360,6 @@
         <td>否</td>
         <td>时间戳:秒</td>
     </tr>
-    <tr>
-        <td>sign</td>
-        <td>string</td>
-        <td>否</td>
-        <td>支付签名:md5(money+platorder+subplatid+ts+uid+appkey)</td>
-    </tr>
 </table>
 
 #### 返回说明
@@ -434,8 +404,8 @@
 
 ***
 
-### 3.3 兑出游戏币
-    请求地址:http://xxx.xxx.xxx:7003/sdk/callback_redeemout
+### 3.3 兑出游戏币(方法：POST)
+    请求地址:http://xxx.xxx.xxx:7003/sdk/callback_redeemout?sign=xxxxxxxxx&gameid=xxx&platid=xxx
 #### 参数说明
 <table>
       <tr>
@@ -463,18 +433,6 @@
         <td>订单金额(人民币分)</td>
     </tr>
     <tr>
-        <td>sign</td>
-        <td>string</td>
-        <td>否</td>
-        <td>签名:md5(money+platorder+ts+uid+appkey)</td>
-    </tr>
-    <tr>
-        <td>platid</td>
-        <td>int</td>
-        <td>否</td>
-        <td>渠道id</td>
-    </tr>
-    <tr>
         <td>subplatid</td>
         <td>string</td>
         <td>否</td>
@@ -488,8 +446,8 @@
     </tr>
 </table>
 #### 返回说明
-### 3.4 兑出游戏币确认
-    请求地址:http://xxx.xxx.xxx/sdk/api
+### 3.4 兑出游戏币确认(方法：POST)
+    请求地址:http://xxx.xxx.xxx/sdk/api?sign=xxxxxxxxxxx
 由渠道方提供,游戏收到兑出请求时调用该接口
 #### 参数说明
 <table>
@@ -535,12 +493,6 @@
         <td>否</td>
         <td>时间戳:秒</td>
     </tr>
-    <tr>
-        <td>sign</td>
-        <td>string</td>
-        <td>否</td>
-        <td>支付签名:md5(money+platorder+subplatid+ts+uid+appkey)</td>
-    </tr>
 </table>
 
 #### 返回说明
@@ -584,8 +536,8 @@
 </table>
 
 
-### 3.5 查询玩家当前能够兑换的余额
-    请求地址:http://xxx.xxx.xxx:7003/sdk/callback_balance
+### 3.5 查询玩家当前能够兑换的余额(方法：POST)
+    请求地址:http://xxx.xxx.xxx:7003/sdk/callback_balance?sign=xxxxxxxxxxxx&gameid=xxx&platid=xxx
 由渠道方提供,游戏收到兑出请求时调用该接口
 #### 参数说明
 <table>
@@ -602,34 +554,16 @@
         <td>渠道用户ID或者账号</td>
     </tr>
     <tr>
-        <td>platid</td>
-        <td>int</td>
-        <td>否</td>
-        <td>渠道ID</td>
-    </tr>
-    <tr>
         <td>subplatid</td>
         <td>int</td>
         <td>否</td>
         <td>子渠道ID</td>
     </tr>
     <tr>
-        <td>gameid</td>
-        <td>int</td>
-        <td>否</td>
-        <td>游戏ID</td>
-    </tr>
-    <tr>
         <td>ts</td>
         <td>int</td>
         <td>否</td>
         <td>时间戳:秒</td>
-    </tr>
-    <tr>
-        <td>sign</td>
-        <td>string</td>
-        <td>否</td>
-        <td>支付签名:md5(uid+ts+appkey)</td>
     </tr>
 </table>
 
@@ -667,3 +601,6 @@
     </tr>
 </table>
 
+### 签名说明：
+注意：当前的所有接口中，只有H5登陆接口是通过Get方法请求的，参数通过标准的GET方法获取参数；其他接口都是POST方法，参数都要求是json格式，接口类似http://xxx.xxx.xxx/sdk/api?gameid=xxx&platid=xxx&sign=xxx,其中sign=md5(post body + appkey), gameid, platid, appkey接入时由我游戏方分配，例如：
+curl -vvv 'http://xxx.xxx.xxx/sdk/callback_balance?gameid=111&platid=111&sign=11111' -d '{"uid":"1001","ts":12334234,"subplatid":1}'
