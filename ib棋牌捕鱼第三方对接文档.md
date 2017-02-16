@@ -332,18 +332,23 @@
 </table>
 
 ### 签名说明：
-注意：当前的所有接口都是POST方法，body要求是参数的json格式，并经过base64编码, sign计算是根据参数的json字符串计算的Md5值；
-如，gameid=1, platid=1, key=adsadsdfgrtg(gameid, platid, key接入时我方会分配),
-    注册账号：buyu，密码：123456，头像：https://ss0.bdstatic.com/a8773912b31bb051b3333f73307adab44aede052.jpg，昵称：buyu,性别：男，子渠道ID为0
+注意：当前的所有接口都是POST方法，body要求是参数的json格式，并经过base64编码, sign计算是根据参数的json字符串计算的Md5值;
+如，gameid=1, platid=1, key=adsadsdfgrtg(gameid, platid, key接入时我方会分配),注册账号：buyu，密码：123456，头像：https://ss0.bdstatic.com/a8773912b31bb051b3333f73307adab44aede052.jpg，昵称：buyu,性别：男，子渠道ID为0
+
 参数的json格式为：
-    '{"account":"buyu","password":"123456","headimg":"https://ss0.bdstatic.com/a8773912b31bb051b3333f73307adab44aede052.jpg","sex":1,"username":"buyu","subplatid":0}'
+>{"account":"buyu","password":"123456","headimg":"https://ss0.bdstatic.com/a8773912b31bb051b3333f73307adab44aede052.jpg","sex":1,"username":"buyu","subplatid":0}
+
 签名字符串则是：
-    '{"account":"buyu","password":"123456","headimg":"https://ss0.bdstatic.com/a8773912b31bb051b3333f73307adab44aede052.jpg","sex":1,"username":"buyu","subplatid":0}adsadsdfgrtg'
+>{"account":"buyu","password":"123456","headimg":"https://ss0.bdstatic.com/a8773912b31bb051b3333f73307adab44aede052.jpg","sex":1,"username":"buyu","subplatid":0}adsadsdfgrtg
+
 签名结果是：
-    8312a39b7df0a2a3c339d8b76b4eebff
+>8312a39b7df0a2a3c339d8b76b4eebff
+
 post请求的body:
-    eyJhY2NvdW50IjoiYnV5dSIsInBhc3N3b3JkIjoiMTIzNDU2IiwiaGVhZGltZyI6Imh0dHBzOi8v\nc3MwLmJkc3RhdGljLmNvbS9hODc3MzkxMmIzMWJiMDUxYjMzMzNmNzMzMDdhZGFiNDRhZWRlMDUy\nLmpwZyIsInNleCI6MSwidXNlcm5hbWUiOiJidXl1Iiwic3VicGxhdGlkIjowfQ==
+>eyJhY2NvdW50IjoiYnV5dSIsInBhc3N3b3JkIjoiMTIzNDU2IiwiaGVhZGltZyI6Imh0dHBzOi8v\nc3MwLmJkc3RhdGljLmNvbS9hODc3MzkxMmIzMWJiMDUxYjMzMzNmNzMzMDdhZGFiNDRhZWRlMDUy\nLmpwZyIsInNleCI6MSwidXNlcm5hbWUiOiJidXl1Iiwic3VicGxhdGlkIjowfQ==
+
 url地址:
-    http://xxx.xxx.xxx/sdk/register?gameid=1&platid=1&sign=8312a39b7df0a2a3c339d8b76b4eebff
+>http://xxx.xxx.xxx/sdk/register?gameid=1&platid=1&sign=8312a39b7df0a2a3c339d8b76b4eebff
+
 最终的请求应该类似以下curl命令
-curl -vvv 'http://xxx.xxx.xxx/sdk/register?gameid=1&platid=1&sign=8312a39b7df0a2a3c339d8b76b4eebff' -d 'eyJhY2NvdW50IjoiYnV5dSIsInBhc3N3b3JkIjoiMTIzNDU2IiwiaGVhZGltZyI6Imh0dHBzOi8v\nc3MwLmJkc3RhdGljLmNvbS9hODc3MzkxMmIzMWJiMDUxYjMzMzNmNzMzMDdhZGFiNDRhZWRlMDUy\nLmpwZyIsInNleCI6MSwidXNlcm5hbWUiOiJidXl1Iiwic3VicGxhdGlkIjowfQ=='
+>curl -vvv 'http://xxx.xxx.xxx/sdk/register?gameid=1&platid=1&sign=8312a39b7df0a2a3c339d8b76b4eebff' -d 'eyJhY2NvdW50IjoiYnV5dSIsInBhc3N3b3JkIjoiMTIzNDU2IiwiaGVhZGltZyI6Imh0dHBzOi8v\nc3MwLmJkc3RhdGljLmNvbS9hODc3MzkxMmIzMWJiMDUxYjMzMzNmNzMzMDdhZGFiNDRhZWRlMDUy\nLmpwZyIsInNleCI6MSwidXNlcm5hbWUiOiJidXl1Iiwic3VicGxhdGlkIjowfQ=='
