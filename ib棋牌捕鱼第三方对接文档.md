@@ -364,7 +364,7 @@
 >{"account":"buyu","password":"123456","headimg":"https://ss0.bdstatic.com/a8773912b31bb051b3333f73307adab44aede052.jpg","sex":1,"username":"buyu","subplatid":0}
 
 签名字符串则是：
->{"account":"buyu","password":"123456","headimg":"https://ss0.bdstatic.com/a8773912b31bb051b3333f73307adab44aede052.jpg","sex":1,"username":"buyu","subplatid":0}adsadsdfgrtg
+>{"account":"buyu","password":"123456","headimg":"https://ss0.bdstatic.com/a8773912b31bb051b3333f73307adab44aede052.jpg","sex":1,"username":"buyu","subplatid":0}
 
 签名结果是：
 >8312a39b7df0a2a3c339d8b76b4eebff
