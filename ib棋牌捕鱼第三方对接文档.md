@@ -12,7 +12,7 @@
       <tr>
         <th>名称</td>
         <th>类型</td>
-        <th>是否可选</td>
+        <th>是否必填</td>
         <th>说明</td>
     </tr>
     <tr>
@@ -30,7 +30,7 @@
     <tr>
         <td>ip</td>
         <td>string</td>
-        <td>是</td>
+        <td>否</td>
         <td>用户的ip地址</td>
     </tr>
     <tr>
@@ -42,7 +42,7 @@
     <tr>
         <td>username</td>
         <td>string</td>
-        <td>否</td>
+        <td>是</td>
         <td>渠道用户昵称</td>
     </tr>
     <tr>
@@ -64,19 +64,19 @@
       <tr>
         <th>名称</td>
         <th>类型</td>
-        <th>是否可选</td>
+        <th>是否必填</td>
         <th>说明</td>
     </tr>
     <tr>
         <td>uid</td>
         <td>string</td>
-        <td>否</td>
+        <td>是</td>
         <td>渠道用户ID或者账号</td>
     </tr>
     <tr>
         <td>status</td>
         <td>int</td>
-        <td>否</td>
+        <td>是</td>
         <td>注册状态(200登录成功,其他登录失败)</td>
     </tr>
     <tr>
@@ -99,7 +99,7 @@
       <tr>
         <th>名称</td>
         <th>类型</td>
-        <th>是否可选</td>
+        <th>是否必填</td>
         <th>说明</td>
     </tr>
     <tr>
@@ -117,7 +117,7 @@
     <tr>
         <td>ip</td>
         <td>string</td>
-        <td>是</td>
+        <td>否</td>
         <td>用户的ip地址</td>
     </tr>
 </table>
@@ -127,32 +127,38 @@
       <tr>
         <th>名称</td>
         <th>类型</td>
-        <th>是否可选</td>
+        <th>是否必填</td>
         <th>说明</td>
     </tr>
     <tr>
         <td>uid</td>
         <td>string</td>
-        <td>否</td>
+        <td>是</td>
         <td>用户ID</td>
     </tr>
     <tr>
         <td>token</td>
         <td>string</td>
-        <td>否</td>
+        <td>是</td>
         <td>后续兑换需要的凭证,有使用期限，过期无效</td>
     </tr>
     <tr>
         <td>gameurl</td>
         <td>string</td>
-        <td>否</td>
+        <td>是</td>
         <td>游戏入口地址,当前用户专用的，不可给其他人使用,该地址有使用期限，过期后登陆不了游戏</td>
     </tr>
     <tr>
         <td>status</td>
         <td>int</td>
-        <td>否</td>
+        <td>是</td>
         <td>登录状态(200登录成功,其他登录失败)</td>
+    </tr>
+    <tr>
+        <td>desc</td>
+        <td>string</td>
+        <td>否</td>
+        <td>成功或失败描述</td>
     </tr>
 </table>
 
@@ -166,37 +172,37 @@
       <tr>
         <th>名称</td>
         <th>类型</td>
-        <th>是否可选</td>
+        <th>是否必填</td>
         <th>说明</td>
     </tr>
     <tr>
         <td>uid</td>
         <td>string</td>
-        <td>否</td>
+        <td>是</td>
         <td>渠道用户ID或者账号</td>
     </tr>
     <tr>
         <td>token</td>
         <td>string</td>
-        <td>否</td>
+        <td>是</td>
         <td>后续兑换需要的凭证,有使用期限，过期无效</td>
     </tr>
     <tr>
         <td>platorder</td>
         <td>string</td>
-        <td>否</td>
+        <td>是</td>
         <td>订单号(渠道方订单号、流水号，最长32位唯一字符串)</td>
     </tr>
     <tr>
         <td>money</td>
         <td>int</td>
-        <td>否</td>
+        <td>是</td>
         <td>订单金额(分)</td>
     </tr>
     <tr>
         <td>ts</td>
         <td>int</td>
-        <td>否</td>
+        <td>是</td>
         <td>时间戳:秒</td>
     </tr>
 </table>
@@ -205,19 +211,19 @@
     <tr>
         <th>名称</td>
         <th>类型</td>
-        <th>是否可选</td>
+        <th>是否必填</td>
         <th>说明</td>
     </tr>
     <tr>
         <td>status</td>
         <td>int</td>
-        <td>否</td>
+        <td>是</td>
         <td>状态：200成功，其他失败</td>
     </tr>
     <tr>
         <td>desc</td>
         <td>string</td>
-        <td>是</td>
+        <td>否</td>
         <td>成功或失败描述</td>
     </tr>
 </table>
@@ -229,42 +235,61 @@
       <tr>
         <th>名称</td>
         <th>类型</td>
-        <th>是否可选</td>
+        <th>是否必填</td>
         <th>说明</td>
     </tr>
     <tr>
         <td>uid</td>
         <td>string</td>
-        <td>否</td>
+        <td>是</td>
         <td>渠道用户ID或者账号</td>
     </tr>
     <tr>
         <td>platorder</td>
         <td>string</td>
-        <td>否</td>
+        <td>是</td>
         <td>订单号(渠道方订单号、流水号，最长32位唯一字符串)</td>
     </tr>
     <tr>
         <td>money</td>
         <td>int</td>
-        <td>否</td>
+        <td>是</td>
         <td>订单金额(人民币分)</td>
     </tr>
     <tr>
         <td>token</td>
         <td>string</td>
-        <td>否</td>
+        <td>是</td>
         <td>后续兑换需要的凭证,有使用期限，过期无效</td>
     </tr>
     <tr>
         <td>ts</td>
         <td>int</td>
-        <td>否</td>
+        <td>是</td>
         <td>时间戳:秒</td>
     </tr>
 </table>
 #### 返回说明
-
+<table>
+    <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否必填</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>int</td>
+        <td>是</td>
+        <td>状态：200成功，其他失败</td>
+    </tr>
+    <tr>
+        <td>desc</td>
+        <td>string</td>
+        <td>否</td>
+        <td>成功或失败描述</td>
+    </tr>
+</table>
 
 ### 3.3 查询玩家当前能够兑换的余额(方法：POST)
     请求地址:http://xxx.xxx.xxx/sdk/callback_balance?gameid=xxx&platid=xxx&sign=xxxxxxxxxxxx
@@ -274,25 +299,25 @@
       <tr>
         <th>名称</td>
         <th>类型</td>
-        <th>是否可选</td>
+        <th>是否必填</td>
         <th>说明</td>
     </tr>
     <tr>
         <td>uid</td>
         <td>string</td>
-        <td>否</td>
+        <td>是</td>
         <td>渠道用户ID或者账号</td>
     </tr>
     <tr>
         <td>token</td>
         <td>string</td>
-        <td>否</td>
+        <td>是</td>
         <td>后续兑换需要的凭证,有使用期限，过期无效</td>
     </tr>
     <tr>
         <td>ts</td>
         <td>int</td>
-        <td>否</td>
+        <td>是</td>
         <td>时间戳:秒</td>
     </tr>
 </table>
@@ -302,13 +327,13 @@
       <tr>
         <th>名称</td>
         <th>类型</td>
-        <th>是否可选</td>
+        <th>是否必填</td>
         <th>说明</td>
     </tr>
     <tr>
         <td>status</td>
         <td>int</td>
-        <td>否</td>
+        <td>是</td>
         <td>充值确认返回状态码(200成功)</td>
     </tr>
     <tr>
@@ -320,13 +345,13 @@
     <tr>
         <td>uid</td>
         <td>string</td>
-        <td>否</td>
+        <td>是</td>
         <td>渠道用户ID或者账号</td>
     </tr>
     <tr>
         <td>money</td>
         <td>int</td>
-        <td>否</td>
+        <td>是</td>
         <td>订单金额(单位：分)</td>
     </tr>
 </table>
