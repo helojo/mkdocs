@@ -34,12 +34,6 @@
         <td>用户的ip地址</td>
     </tr>
     <tr>
-        <td>subplatid</td>
-        <td>int</td>
-        <td>是</td>
-        <td>用户所属子渠道ID</td>
-    </tr>
-    <tr>
         <td>username</td>
         <td>string</td>
         <td>是</td>
@@ -200,12 +194,6 @@
         <td>订单金额(分)</td>
     </tr>
     <tr>
-        <td>subplatid</td>
-        <td>int</td>
-        <td>是</td>
-        <td>用户所属子渠道ID</td>
-    </tr>
-    <tr>
         <td>ts</td>
         <td>int</td>
         <td>是</td>
@@ -255,12 +243,6 @@
         <td>string</td>
         <td>是</td>
         <td>订单号(渠道方订单号、流水号，最长32位唯一字符串)</td>
-    </tr>
-    <tr>
-        <td>subplatid</td>
-        <td>int</td>
-        <td>是</td>
-        <td>用户所属子渠道ID</td>
     </tr>
     <tr>
         <td>money</td>
@@ -319,12 +301,6 @@
         <td>string</td>
         <td>是</td>
         <td>渠道用户ID或者账号</td>
-    </tr>
-    <tr>
-        <td>subplatid</td>
-        <td>int</td>
-        <td>是</td>
-        <td>用户所属子渠道ID</td>
     </tr>
     <tr>
         <td>token</td>
@@ -390,16 +366,16 @@
         <th>说明</td>
     </tr>
     <tr>
-        <td>uid</td>
+        <td>account</td>
         <td>string</td>
         <td>是</td>
-        <td>登陆接口返回的Id，查询单个用户填入值</td>
+        <td>玩家登陆的账号(查询指定玩家才需要该参数)</td>
     </tr>
     <tr>
         <td>subplatid</td>
         <td>int</td>
         <td>是</td>
-        <td>子渠道ID</td>
+        <td>子渠道ID(没有子渠道ID的可以不填该参数)</td>
     </tr>
     <tr>
         <td>ts</td>
@@ -442,10 +418,10 @@
         <td>昵称</td>
     </tr>
     <tr>
-        <td>subplatid</td>
+        <td>platid</td>
         <td>int</td>
         <td>是</td>
-        <td>子渠道</td>
+        <td>渠道Id(通常跟分配给渠道的ID一样，除非拥有子渠道)</td>
     </tr>
     <tr>
         <td>sceneid</td>
