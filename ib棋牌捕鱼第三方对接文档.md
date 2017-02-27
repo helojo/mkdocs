@@ -169,7 +169,7 @@
     请求地址:http://xxx.xxx.xxx/sdk/callback_redeemin?gameid=xxx&platid=xxx&sign=xxxxxxxxx
 #### 参数说明
 <table>
-      <tr>
+    <tr>
         <th>名称</td>
         <th>类型</td>
         <th>是否必填</td>
@@ -198,6 +198,12 @@
         <td>int</td>
         <td>是</td>
         <td>订单金额(分)</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>是</td>
+        <td>用户所属子渠道ID</td>
     </tr>
     <tr>
         <td>ts</td>
@@ -251,6 +257,12 @@
         <td>订单号(渠道方订单号、流水号，最长32位唯一字符串)</td>
     </tr>
     <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>是</td>
+        <td>用户所属子渠道ID</td>
+    </tr>
+    <tr>
         <td>money</td>
         <td>int</td>
         <td>是</td>
@@ -296,7 +308,7 @@
 由渠道方提供,游戏收到兑出请求时调用该接口
 #### 参数说明
 <table>
-      <tr>
+    <tr>
         <th>名称</td>
         <th>类型</td>
         <th>是否必填</td>
@@ -307,6 +319,12 @@
         <td>string</td>
         <td>是</td>
         <td>渠道用户ID或者账号</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>是</td>
+        <td>用户所属子渠道ID</td>
     </tr>
     <tr>
         <td>token</td>
@@ -324,7 +342,7 @@
 
 #### 返回说明
 <table>
-      <tr>
+    <tr>
         <th>名称</td>
         <th>类型</td>
         <th>是否必填</td>
@@ -355,6 +373,125 @@
         <td>订单金额(单位：分)</td>
     </tr>
 </table>
+
+***
+
+## 4 查询接口
+该接口提供游戏记录给渠道和子渠道方进行查询
+### 4.1 查询地址(方法：POST)
+    请求地址: http://xxx.xxx.xxx/sdk/callback_record?gameid=xxx&platid=xxx&sign=xxxxxxxxxx
+
+#### 参数说明
+<table>
+    <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否必填</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>uid</td>
+        <td>string</td>
+        <td>是</td>
+        <td>登陆接口返回的Id，查询单个用户填入值</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>是</td>
+        <td>子渠道ID</td>
+    </tr>
+    <tr>
+        <td>ts</td>
+        <td>int</td>
+        <td>是</td>
+        <td>时间戳:秒</td>
+    </tr>
+</table>
+
+#### 返回说明
+<table>
+    <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否必填</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>int</td>
+        <td>是</td>
+        <td>查询状态(200登录成功,其他失败)</td>
+    </tr>
+    <tr>
+        <td>desc</td>
+        <td>string</td>
+        <td>否</td>
+        <td>成功或失败描述</td>
+    </tr>
+    <tr>
+        <td>uid</td>
+        <td>string</td>
+        <td>是</td>
+        <td>用户账号</td>
+    </tr>
+    <tr>
+        <td>nickname</td>
+        <td>string</td>
+        <td>是</td>
+        <td>昵称</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>是</td>
+        <td>子渠道</td>
+    </tr>
+    <tr>
+        <td>sceneid</td>
+        <td>int</td>
+        <td>是</td>
+        <td>场次id(1初级场,2中级场,3高级场)</td>
+    </tr>
+    <tr>
+        <td>roomid</td>
+        <td>int</td>
+        <td>是</td>
+        <td>房号</td>
+    </tr>
+    <tr>
+        <td>bet</td>
+        <td>int</td>
+        <td>是</td>
+        <td>投注</td>
+    </tr>
+    <tr>
+        <td>payout</td>
+        <td>int</td>
+        <td>是</td>
+        <td>派彩(派彩减去投注就是输赢)</td>
+    </tr>
+    <tr>
+        <td>from</td>
+        <td>int</td>
+        <td>是</td>
+        <td>开始时间戳</td>
+    </tr>
+    <tr>
+        <td>to</td>
+        <td>int</td>
+        <td>是</td>
+        <td>结束时间戳</td>
+    </tr>
+    <tr>
+        <td>ip</td>
+        <td>string</td>
+        <td>否</td>
+        <td>用户的ip地址</td>
+    </tr>
+</table>
+
+***
 
 ### 签名说明：
 注意：当前的所有接口都是POST方法，body要求是参数的json格式，并经过base64编码, sign计算是根据参数的json字符串计算的Md5值;
