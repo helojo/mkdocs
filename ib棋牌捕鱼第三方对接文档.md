@@ -188,6 +188,12 @@
         <td>渠道用户ID或者账号</td>
     </tr>
     <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>是</td>
+        <td>子渠道ID(没有子渠道ID的可以不填该参数)</td>
+    </tr>
+    <tr>
         <td>token</td>
         <td>string</td>
         <td>是</td>
@@ -249,6 +255,12 @@
         <td>string</td>
         <td>是</td>
         <td>渠道用户ID或者账号</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>是</td>
+        <td>子渠道ID(没有子渠道ID的可以不填该参数)</td>
     </tr>
     <tr>
         <td>platorder</td>
@@ -313,6 +325,12 @@
         <td>string</td>
         <td>是</td>
         <td>渠道用户ID或者账号</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>是</td>
+        <td>子渠道ID(没有子渠道ID的可以不填该参数)</td>
     </tr>
     <tr>
         <td>token</td>
