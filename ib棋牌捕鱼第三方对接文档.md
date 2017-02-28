@@ -16,6 +16,12 @@
         <th>说明</td>
     </tr>
     <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>是</td>
+        <td>子渠道ID(没有子渠道ID的可以不填该参数)</td>
+    </tr>
+    <tr>
         <td>account</td>
         <td>string</td>
         <td>是</td>
@@ -113,6 +119,12 @@
         <td>string</td>
         <td>否</td>
         <td>用户的ip地址</td>
+    </tr>
+    <tr>
+        <td>subplatid</td>
+        <td>int</td>
+        <td>是</td>
+        <td>子渠道ID(没有子渠道ID的可以不填该参数)</td>
     </tr>
 </table>
 
@@ -369,7 +381,7 @@
         <td>account</td>
         <td>string</td>
         <td>是</td>
-        <td>玩家登陆的账号(查询指定玩家才需要该参数)</td>
+        <td>登陆账号</td>
     </tr>
     <tr>
         <td>subplatid</td>
@@ -382,6 +394,18 @@
         <td>int</td>
         <td>是</td>
         <td>时间戳:秒</td>
+    </tr>
+    <tr>
+        <td>curpage</td>
+        <td>int</td>
+        <td>是</td>
+        <td>当前第几页</td>
+    </tr>
+    <tr>
+        <td>perpage</td>
+        <td>int</td>
+        <td>是</td>
+        <td>每页请求多少条</td>
     </tr>
 </table>
 
@@ -406,22 +430,49 @@
         <td>成功或失败描述</td>
     </tr>
     <tr>
-        <td>uid</td>
-        <td>string</td>
+        <td>curpage</td>
+        <td>int</td>
         <td>是</td>
-        <td>用户账号</td>
+        <td>当前第几页</td>
     </tr>
     <tr>
-        <td>nickname</td>
+        <td>perpage</td>
+        <td>int</td>
+        <td>是</td>
+        <td>每页请求多少条</td>
+    </tr>
+    <tr>
+        <td>maxpage</td>
+        <td>int</td>
+        <td>是</td>
+        <td>最大页数</td>
+    </tr>
+    <tr>
+        <td>data</td>
+        <td>array</td>
+        <td>是</td>
+        <td>游戏记录数据</td>
+    </tr>
+</table>
+#### 游戏记录数据说明
+<table>
+    <tr>
+        <th>名称</td>
+        <th>类型</td>
+        <th>是否必填</td>
+        <th>说明</td>
+    </tr>
+    <tr>
+        <td>charname</td>
         <td>string</td>
         <td>是</td>
-        <td>昵称</td>
+        <td>角色昵称，即玩家登陆账号</td>
     </tr>
     <tr>
         <td>platid</td>
         <td>int</td>
         <td>是</td>
-        <td>渠道Id(通常跟分配给渠道的ID一样，除非拥有子渠道)</td>
+        <td>渠道Id，子渠道ID</td>
     </tr>
     <tr>
         <td>sceneid</td>
@@ -448,13 +499,13 @@
         <td>派彩(派彩减去投注就是输赢)</td>
     </tr>
     <tr>
-        <td>from</td>
+        <td>start</td>
         <td>int</td>
         <td>是</td>
         <td>开始时间戳</td>
     </tr>
     <tr>
-        <td>to</td>
+        <td>end</td>
         <td>int</td>
         <td>是</td>
         <td>结束时间戳</td>
