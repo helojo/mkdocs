@@ -408,6 +408,18 @@
         <td>时间戳:秒</td>
     </tr>
     <tr>
+        <td>start</td>
+        <td>int</td>
+        <td>是</td>
+        <td>筛选的时间戳范围</td>
+    </tr>
+    <tr>
+        <td>end</td>
+        <td>int</td>
+        <td>是</td>
+        <td>筛选的时间戳范围</td>
+    </tr>
+    <tr>
         <td>curpage</td>
         <td>int</td>
         <td>是</td>
@@ -517,16 +529,10 @@
         <td>盈利</td>
     </tr>
     <tr>
-        <td>start</td>
-        <td>int</td>
+        <td>time</td>
+        <td>string</td>
         <td>是</td>
-        <td>开始时间戳</td>
-    </tr>
-    <tr>
-        <td>end</td>
-        <td>int</td>
-        <td>是</td>
-        <td>结束时间戳</td>
+        <td>日期时间字符串</td>
     </tr>
     <tr>
         <td>ip</td>
