@@ -409,15 +409,15 @@
     </tr>
     <tr>
         <td>start</td>
-        <td>int</td>
+        <td>string</td>
         <td>是</td>
-        <td>筛选的时间戳范围</td>
+        <td>筛选日期，格式：YYYY-mm-dd HH:MM:SS, 如：2017-03-01 20:00:00</td>
     </tr>
     <tr>
         <td>end</td>
-        <td>int</td>
+        <td>string</td>
         <td>是</td>
-        <td>筛选的时间戳范围</td>
+        <td>筛选日期，格式：YYYY-mm-dd HH:MM:SS, 如：2017-03-01 20:00:00</td>
     </tr>
     <tr>
         <td>curpage</td>
