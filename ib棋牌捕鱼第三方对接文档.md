@@ -40,12 +40,6 @@
         <td>用户的ip地址</td>
     </tr>
     <tr>
-        <td>username</td>
-        <td>string</td>
-        <td>是</td>
-        <td>渠道用户昵称</td>
-    </tr>
-    <tr>
         <td>headimg</td>
         <td>string</td>
         <td>否</td>
@@ -515,6 +509,12 @@
         <td>int</td>
         <td>是</td>
         <td>派彩(派彩减去投注就是输赢)</td>
+    </tr>
+    <tr>
+        <td>profit</td>
+        <td>int</td>
+        <td>是</td>
+        <td>盈利</td>
     </tr>
     <tr>
         <td>start</td>
