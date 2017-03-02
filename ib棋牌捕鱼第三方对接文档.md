@@ -528,6 +528,12 @@
         <td>是</td>
         <td>盈利</td>
     </tr>
+	<tr>
+        <td>chips</td>
+        <td>int</td>
+        <td>是</td>
+        <td>剩余筹码</td>
+    </tr>
     <tr>
         <td>time</td>
         <td>string</td>
